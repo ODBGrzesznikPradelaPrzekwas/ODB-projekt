@@ -1,0 +1,16 @@
+Class Firma.Osoba Extends (%Populate, %XML.Adaptor, %ZEN.DataModel.Adaptor, Firma.Adres) [ Abstract ]
+{
+
+Property PESEL As %String(MAXLEN = 11, MINLEN = 11) [ Required ];
+
+Property Imie As %String [ Required ];
+
+Property Nazwisko As %String [ Required ];
+
+Method Wyswietlinformacje() As %String
+{
+ 
+ Return "Imiê: "_..Imie_" Nazwisko: "_..Nazwisko_" PESEL: "_..PESEL
+}
+
+}

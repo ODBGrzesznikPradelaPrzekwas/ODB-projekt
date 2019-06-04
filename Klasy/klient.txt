@@ -1,0 +1,53 @@
+Class Firma.Klient Extends (%Persistent, %Populate, %XML.Adaptor, %ZEN.DataModel.Adaptor, Firma.Osoba)
+{
+
+Property NrTelefonu As %String(MAXLEN = 9, MINLEN = 9);
+
+Relationship sklada As Firma.Zamowienie [ Cardinality = many, Inverse = jestSkladane ];
+
+Storage Default
+{
+<Data name="KlientDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Miasto</Value>
+</Value>
+<Value name="3">
+<Value>Imie</Value>
+</Value>
+<Value name="4">
+<Value>Nazwisko</Value>
+</Value>
+<Value name="5">
+<Value>NrLokalu</Value>
+</Value>
+<Value name="6">
+<Value>NrDomu</Value>
+</Value>
+<Value name="7">
+<Value>NrTelefonu</Value>
+</Value>
+<Value name="8">
+<Value>PESEL</Value>
+</Value>
+<Value name="9">
+<Value>Ulica</Value>
+</Value>
+</Data>
+<DataLocation>^Firma.KlientD</DataLocation>
+<DefaultData>KlientDefaultData</DefaultData>
+<IdLocation>^Firma.KlientD</IdLocation>
+<IndexLocation>^Firma.KlientI</IndexLocation>
+<StreamLocation>^Firma.KlientS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+Method Wyswietlinformacje() As %String
+{
+ 
+ Return "Imiê: "_..Imie_" Nazwisko: "_..Nazwisko_" PESEL: "_..PESEL
+}
+
+}

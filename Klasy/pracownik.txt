@@ -1,0 +1,73 @@
+Class Firma.Pracownik Extends (%Persistent, %Populate, %XML.Adaptor, %ZEN.DataModel.Adaptor, Firma.Osoba)
+{
+
+Property Praca As Stanowisko [ Required ];
+
+Relationship realizuje As Firma.Zamowienie [ Cardinality = many, Inverse = jestRealizowane ];
+
+Relationship jestZarzadzany As Firma.Wlasciciel [ Cardinality = one, Inverse = Zarzadza ];
+
+Storage Default
+{
+<Data name="PracownikDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Miasto</Value>
+</Value>
+<Value name="3">
+<Value>Imie</Value>
+</Value>
+<Value name="4">
+<Value>Nazwisko</Value>
+</Value>
+<Value name="5">
+<Value>NrLokalu</Value>
+</Value>
+<Value name="6">
+<Value>Nazwa</Value>
+</Value>
+<Value name="7">
+<Value>NrDomu</Value>
+</Value>
+<Value name="8">
+<Value>PESEL</Value>
+</Value>
+<Value name="9">
+<Value>Praca</Value>
+</Value>
+<Value name="10">
+<Value>Ulica</Value>
+</Value>
+<Value name="11">
+<Value>jestZarzadzany</Value>
+</Value>
+</Data>
+<DataLocation>^Firma.PracownikD</DataLocation>
+<DefaultData>PracownikDefaultData</DefaultData>
+<IdLocation>^Firma.PracownikD</IdLocation>
+<IndexLocation>^Firma.PracownikI</IndexLocation>
+<StreamLocation>^Firma.PracownikS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+Method Wyswietlinformacje() As %String
+{
+ 
+ Return "Imiê: "_..Imie_" Nazwisko: "_..Nazwisko_" PESEL: "_..PESEL
+}
+
+Method ZmienCeneZamowienia(NazwaZamowienia, stawka) As %Float
+{
+  set NazwaZamowienia.Cena = stawka
+  Return stawka
+}
+
+Method ZmienStanZamowienia(NazwaZamowienia, Stan) As %String
+{
+  set NazwaZamowienia.Status = Stan
+  Return Stan
+}
+
+}

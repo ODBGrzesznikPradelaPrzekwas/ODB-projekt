@@ -1,0 +1,44 @@
+Class Firma.Zamowienie Extends (%Persistent, %Populate, %XML.Adaptor, %ZEN.DataModel.Adaptor)
+{
+
+Property NazwaZamowienia As %String [ Required ];
+
+Property Cena As %Float [ Required ];
+
+Property Status As %String [ Required ];
+
+Relationship jestRealizowane As Firma.Pracownik [ Cardinality = one, Inverse = realizuje ];
+
+Relationship jestSkladane As Firma.Klient [ Cardinality = one, Inverse = sklada ];
+
+Storage Default
+{
+<Data name="ZamowienieDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>NazwaZamowienia</Value>
+</Value>
+<Value name="3">
+<Value>Cena</Value>
+</Value>
+<Value name="4">
+<Value>Status</Value>
+</Value>
+<Value name="5">
+<Value>jestRealizowane</Value>
+</Value>
+<Value name="6">
+<Value>jestSkladane</Value>
+</Value>
+</Data>
+<DataLocation>^Firma.ZamowienieD</DataLocation>
+<DefaultData>ZamowienieDefaultData</DefaultData>
+<IdLocation>^Firma.ZamowienieD</IdLocation>
+<IndexLocation>^Firma.ZamowienieI</IndexLocation>
+<StreamLocation>^Firma.ZamowienieS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+}

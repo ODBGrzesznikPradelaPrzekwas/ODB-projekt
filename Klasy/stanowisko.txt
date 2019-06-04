@@ -1,0 +1,23 @@
+Class Firma.Stanowisko Extends (%SerialObject, %Populate, %XML.Adaptor, %ZEN.DataModel.Adaptor)
+{
+
+Property Nazwa As %String [ Required ];
+
+Property Wynagrodzenie As %Float [ Required ];
+
+Storage Default
+{
+<Data name="StanowiskoState">
+<Value name="1">
+<Value>Nazwa</Value>
+</Value>
+<Value name="2">
+<Value>Wynagrodzenie</Value>
+</Value>
+</Data>
+<State>StanowiskoState</State>
+<StreamLocation>^Firma.StanowiskoS</StreamLocation>
+<Type>%Library.CacheSerialState</Type>
+}
+
+}

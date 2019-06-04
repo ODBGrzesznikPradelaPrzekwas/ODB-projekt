@@ -1,0 +1,67 @@
+Class Firma.Wlasciciel Extends (%Persistent, %Populate, %XML.Adaptor, %ZEN.DataModel.Adaptor, %Persistent, Firma.Osoba)
+{
+
+Property Firma As %String [ Required ];
+
+Relationship Zarzadza As Firma.Pracownik [ Cardinality = many, Inverse = jestZarzadzany ];
+
+Storage Default
+{
+<Data name="WlascicielDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Firma</Value>
+</Value>
+<Value name="3">
+<Value>Imie</Value>
+</Value>
+<Value name="4">
+<Value>Nazwisko</Value>
+</Value>
+<Value name="5">
+<Value>NrLokalu</Value>
+</Value>
+<Value name="6">
+<Value>Miasto</Value>
+</Value>
+<Value name="7">
+<Value>NrDomu</Value>
+</Value>
+<Value name="8">
+<Value>PESEL</Value>
+</Value>
+<Value name="9">
+<Value>Ulica</Value>
+</Value>
+</Data>
+<DataLocation>^Firma.WlascicielD</DataLocation>
+<DefaultData>WlascicielDefaultData</DefaultData>
+<IdLocation>^Firma.WlascicielD</IdLocation>
+<IndexLocation>^Firma.WlascicielI</IndexLocation>
+<StreamLocation>^Firma.WlascicielS</StreamLocation>
+<Type>%Library.CacheStorage</Type>
+}
+
+Method Wyswietlinformacje() As %String
+{
+ 
+ Return "Imiê: "_..Imie_" Nazwisko: "_..Nazwisko_" PESEL: "_..PESEL
+}
+
+Method ZmienWynagrodzenie(pracownik, stawka) As %Float
+{
+  	set pracownik.Praca.Wynagrodzenie = stawka
+	set sc = pracownik.%Save()
+  	Return stawka
+}
+
+Method ZwolnijPracownika(id) As %String
+{
+ 
+  Set sc = ##class(Firma.Pracownik).%DeleteId(id)
+ return id
+}
+
+}

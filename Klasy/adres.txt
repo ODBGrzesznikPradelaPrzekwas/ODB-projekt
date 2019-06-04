@@ -1,0 +1,12 @@
+Class Firma.Adres Extends (%Populate, %XML.Adaptor, %ZEN.DataModel.Adaptor) [ Abstract ]
+{
+
+Property Miasto As %String [ Required ];
+
+Property Ulica As %String [ Required ];
+
+Property NrDomu As %String [ Required ];
+
+Property NrLokalu As %String;
+
+}
