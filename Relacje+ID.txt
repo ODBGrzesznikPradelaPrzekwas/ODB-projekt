@@ -1,0 +1,127 @@
+set wlasciciel1 = ##class(Firma.Wlasciciel).%OpenId(13)
+set wlasciciel2 = ##class(Firma.Wlasciciel).%OpenId(14)
+set wlasciciel3 = ##class(Firma.Wlasciciel).%OpenId(15)
+set klient1 = ##class(Firma.Klient).%OpenId(6)
+set klient2 = ##class(Firma.Klient).%OpenId(7)
+set klient3 = ##class(Firma.Klient).%OpenId(8)
+set klient4 = ##class(Firma.Klient).%OpenId(9)
+set klient5 = ##class(Firma.Klient).%OpenId(10)
+set pracownik1 = ##class(Firma.Pracownik).%OpenId(12)
+set pracownik2 = ##class(Firma.Pracownik).%OpenId(13)
+set pracownik3 = ##class(Firma.Pracownik).%OpenId(14)
+set pracownik4 = ##class(Firma.Pracownik).%OpenId(15)
+set pracownik5 = ##class(Firma.Pracownik).%OpenId(16)
+set pracownik6 = ##class(Firma.Pracownik).%OpenId(17)
+set zamowienie1 = ##class(Firma.Zamowienie).%OpenId(10)
+set zamowienie2 = ##class(Firma.Zamowienie).%OpenId(11)
+set zamowienie3 = ##class(Firma.Zamowienie).%OpenId(12)
+set zamowienie4 = ##class(Firma.Zamowienie).%OpenId(13)
+set zamowienie5 = ##class(Firma.Zamowienie).%OpenId(14)
+set zamowienie6 = ##class(Firma.Zamowienie).%OpenId(15)
+set zamowienie7 = ##class(Firma.Zamowienie).%OpenId(16)
+set zamowienie8 = ##class(Firma.Zamowienie).%OpenId(17)
+set zamowienie9 = ##class(Firma.Zamowienie).%OpenId(18)
+set zamowienie10 = ##class(Firma.Zamowienie).%OpenId(19)
+
+
+
+set pracownik1.jestZarzadzany=wlasciciel1
+Set sc = pracownik1.%Save()
+set pracownik2.jestZarzadzany=wlasciciel1
+Set sc = pracownik2.%Save()
+set pracownik3.jestZarzadzany=wlasciciel2
+Set sc = pracownik3.%Save()
+set pracownik4.jestZarzadzany=wlasciciel3
+Set sc = pracownik4.%Save()
+set pracownik5.jestZarzadzany=wlasciciel3
+Set sc = pracownik5.%Save()
+set pracownik6.jestZarzadzany=wlasciciel3
+Set sc = pracownik6.%Save()
+
+
+
+set pracownik1.realizuje=zamowienie1
+set pracownik1.realizuje=zamowienie2
+Set sc = pracownik1.%Save()
+set pracownik2.realizuje=zamowienie3
+Set sc = pracownik2.%Save()
+set pracownik3.realizuje=zamowienie4
+Set sc = pracownik3.%Save()
+set pracownik4.realizuje=zamowienie5
+set pracownik4.realizuje=zamowienie6
+set pracownik4.realizuje=zamowienie7
+Set sc = pracownik4.%Save()
+set pracownik5.realizuje=zamowienie8
+set pracownik5.realizuje=zamowienie9
+Set sc = pracownik5.%Save()
+set pracownik6.realizuje=zamowienie10
+Set sc = pracownik6.%Save()
+
+
+set zamowienie1.jestRealizowane=pracownik1
+Set sc = zamowienie1.%Save()
+set zamowienie2.jestRealizowane=pracownik1
+Set sc = zamowienie2.%Save()
+set zamowienie3.jestRealizowane=pracownik2
+Set sc = zamowienie3.%Save()
+set zamowienie4.jestRealizowane=pracownik3
+Set sc = zamowienie4.%Save()
+set zamowienie5.jestRealizowane=pracownik4
+Set sc = zamowienie5.%Save()
+set zamowienie6.jestRealizowane=pracownik4
+Set sc = zamowienie6.%Save()
+set zamowienie7.jestRealizowane=pracownik4
+Set sc = zamowienie7.%Save()
+set zamowienie8.jestRealizowane=pracownik5
+Set sc = zamowienie8.%Save()
+set zamowienie9.jestRealizowane=pracownik5
+Set sc = zamowienie9.%Save()
+set zamowienie10.jestRealizowane=pracownik6
+Set sc = zamowienie10.%Save()
+
+
+
+set klient1.sklada=zamowienie1
+Set sc = klient1.%Save()
+set klient1.sklada=zamowienie2
+Set sc = klient1.%Save()
+set klient1.sklada=zamowienie3
+Set sc = klient1.%Save()
+set klient2.sklada=zamowienie4
+Set sc = klient2.%Save()
+set klient3.sklada=zamowienie5
+Set sc = klient3.%Save()
+set klient3.sklada=zamowienie6
+Set sc = klient3.%Save()
+set klient4.sklada=zamowienie7
+Set sc = klient4.%Save()
+set klient5.sklada=zamowienie8
+Set sc = klient5.%Save()
+set klient5.sklada=zamowienie9
+Set sc = klient5.%Save()
+set klient5.sklada=zamowienie10
+Set sc = klient5.%Save()
+
+
+
+set zamowienie1.jestSkladane=klient1
+Set sc = zamowienie1.%Save()
+set zamowienie2.jestSkladane=klient1
+Set sc = zamowienie2.%Save()
+set zamowienie3.jestSkladane=klient1
+Set sc = zamowienie3.%Save()
+set zamowienie4.jestSkladane=klient2
+Set sc = zamowienie4.%Save()
+set zamowienie5.jestSkladane=klient3
+Set sc = zamowienie5.%Save()
+set zamowienie6.jestSkladane=klient3
+Set sc = zamowienie6.%Save()
+set zamowienie7.jestSkladane=klient4
+Set sc = zamowienie7.%Save()
+set zamowienie8.jestSkladane=klient5
+Set sc = zamowienie8.%Save()
+set zamowienie9.jestSkladane=klient5
+Set sc = zamowienie9.%Save()
+set zamowienie10.jestSkladane=klient5
+Set sc = zamowienie10.%Save()
+

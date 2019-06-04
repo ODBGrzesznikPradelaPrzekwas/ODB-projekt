@@ -1,0 +1,323 @@
+Do $SYSTEM.SQL.Shell()
+
+
+Set wlasciciel1= ##class(Firma.Wlasciciel).%New()
+Set wlasciciel1.PESEL="76021654823"
+Set wlasciciel1.Imie="Oskar"
+Set wlasciciel1.Nazwisko="Nowakowski"
+Set wlasciciel1.Firma="Stokrotka"
+Set wlasciciel1.Miasto="Warszawa"
+Set wlasciciel1.Ulica="Wiejska"
+Set wlasciciel1.NrDomu="5"
+Set wlasciciel1.NrLokalu="4"
+zwrite wlasciciel1
+Set sc = wlasciciel1.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set pracownik1= ##class(Firma.Pracownik).%New()
+Set pracownik1.PESEL="58120559760"
+Set pracownik1.Imie="Bartek"
+Set pracownik1.Nazwisko="Nowak"
+Set pracownik1.Miasto="Poznan"
+Set pracownik1.Ulica="Nowa"
+Set pracownik1.NrDomu="1"
+Set pracownik1.NrLokalu="2"
+zwrite pracownik1
+Set pracownik1.Praca= ##class(Firma.Stanowisko).%New()
+Set pracownik1.Praca.Nazwa="Kasjer"
+Set pracownik1.Praca.Wynagrodzenie=1800
+zwrite pracownik1.Praca
+do $system.OBJ.DisplayError(sc)
+Set sc = pracownik1.%Save()
+
+
+set wlasciciel1.Zarzadza=pracownik1
+Set sc = wlasciciel1.%Save()
+
+Set pracownik2= ##class(Firma.Pracownik).%New()
+Set pracownik2.PESEL="97061912515"
+Set pracownik2.Imie="Piotr"
+Set pracownik2.Nazwisko="Adamczyk"
+Set pracownik2.Miasto="Warszawa"
+Set pracownik2.Ulica="Kochanowskiego"
+Set pracownik2.NrDomu="1"
+Set pracownik2.NrLokalu="12"
+zwrite pracownik2
+Set pracownik2.Praca= ##class(Firma.Stanowisko).%New()
+Set pracownik2.Praca.Nazwa="Pomocnik"
+Set pracownik2.Praca.Wynagrodzenie=1200
+zwrite pracownik2.Praca
+Set sc = pracownik2.%Save()
+do $system.OBJ.DisplayError(sc)
+
+set wlasciciel1.Zarzadza=pracownik2
+Set sc = wlasciciel1.%Save()
+
+
+Set wlasciciel2= ##class(Firma.Wlasciciel).%New()
+Set wlasciciel2.PESEL="37021128701"
+Set wlasciciel2.Imie="Marzena"
+Set wlasciciel2.Nazwisko="Szczepaniak"
+Set wlasciciel2.Firma="ABC"
+Set wlasciciel2.Miasto="Warszawa"
+Set wlasciciel2.Ulica="Białowiejska"
+Set wlasciciel2.NrDomu="1"
+Set wlasciciel2.NrLokalu=""
+zwrite wlasciciel2
+Set sc = wlasciciel2.%Save()
+do $system.OBJ.DisplayError(sc)
+Set sc = wlasciciel2.%Save()
+
+
+Set pracownik3= ##class(Firma.Pracownik).%New()
+Set pracownik3.PESEL="52061847429"
+Set pracownik3.Imie="Agata"
+Set pracownik3.Nazwisko="Pietrzak"
+Set pracownik3.Miasto="Wroclaw"
+Set pracownik3.Ulica="Kononowicza"
+Set pracownik3.NrDomu="13"
+Set pracownik3.NrLokalu="21"
+zwrite pracownik3
+Set pracownik3.Praca= ##class(Firma.Stanowisko).%New()
+Set pracownik3.Praca.Nazwa="Monter"
+Set pracownik3.Praca.Wynagrodzenie=2200
+zwrite pracownik3.Praca
+do $system.OBJ.DisplayError(sc)
+Set sc = pracownik3.%Save()
+
+
+set wlasciciel2.Zarzadza=pracownik3
+Set sc = wlasciciel2.%Save()
+
+
+Set wlasciciel3= ##class(Firma.Wlasciciel).%New()
+Set wlasciciel3.PESEL="69120224303"
+Set wlasciciel3.Imie="Maria"
+Set wlasciciel3.Nazwisko="Kowalska"
+Set wlasciciel3.Firma="Poland"
+Set wlasciciel3.Miasto="Sandomierz"
+Set wlasciciel3.Ulica="Bazyla"
+Set wlasciciel3.NrDomu="15"
+Set wlasciciel3.NrLokalu="4"
+zwrite wlasciciel3
+Set sc = wlasciciel3.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set pracownik4= ##class(Firma.Pracownik).%New()
+Set pracownik4.PESEL="69120224303"
+Set pracownik4.Imie="Maja"
+Set pracownik4.Nazwisko="Mazur"
+Set pracownik4.Miasto="Bydgoszcz"
+Set pracownik4.Ulica="Kaczki"
+Set pracownik4.NrDomu="13"
+Set pracownik4.NrLokalu="121"
+zwrite pracownik4
+Set pracownik4.Praca= ##class(Firma.Stanowisko).%New()
+Set pracownik4.Praca.Nazwa="Kasjer"
+Set pracownik4.Praca.Wynagrodzenie=1900
+zwrite pracownik4.Praca
+do $system.OBJ.DisplayError(sc)
+Set sc = pracownik4.%Save()
+
+
+Set pracownik5= ##class(Firma.Pracownik).%New()
+Set pracownik5.PESEL="24040148311"
+Set pracownik5.Imie="Adrian"
+Set pracownik5.Nazwisko="Stasiak"
+Set pracownik5.Miasto="Ciechanow"
+Set pracownik5.Ulica="Batorego"
+Set pracownik5.NrDomu="1"
+Set pracownik5.NrLokalu="1"
+zwrite pracownik5
+Set pracownik5.Praca= ##class(Firma.Stanowisko).%New()
+Set pracownik5.Praca.Nazwa="Kasjer"
+Set pracownik5.Praca.Wynagrodzenie=2000
+zwrite pracownik5.Praca
+do $system.OBJ.DisplayError(sc)
+Set sc = pracownik5.%Save()
+
+Set pracownik6= ##class(Firma.Pracownik).%New()
+Set pracownik6.PESEL="86072968992"
+Set pracownik6.Imie="Jakub"
+Set pracownik6.Nazwisko="Ciesielski"
+Set pracownik6.Miasto="Torun"
+Set pracownik6.Ulica="Ksiezycowa"
+Set pracownik6.NrDomu="5"
+Set pracownik6.NrLokalu="11"
+zwrite pracownik6
+Set pracownik6.Praca= ##class(Firma.Stanowisko).%New()
+Set pracownik6.Praca.Nazwa="Pomocnik"
+Set pracownik6.Praca.Wynagrodzenie=1500
+zwrite pracownik6.Praca
+do $system.OBJ.DisplayError(sc)
+Set sc = pracownik6.%Save()
+
+set wlasciciel3.Zarzadza=pracownik4
+set wlasciciel3.Zarzadza=pracownik5
+set wlasciciel3.Zarzadza=pracownik6
+Set sc = wlasciciel3.%Save()
+
+
+
+
+
+Set klient1= ##class(Firma.Klient).%New()
+Set klient1.PESEL="89060143032"
+Set klient1.Imie="Maciej"
+Set klient1.Nazwisko="Wojtal"
+Set klient1.Miasto="Warszawa"
+Set klient1.Ulica="Kubacka"
+Set klient1.NrDomu="12"
+Set klient1.NrLokalu="14"
+Set klient1.NrTelefonu="741650757"
+zwrite klient1
+Set sc = klient1.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set klient2= ##class(Firma.Klient).%New()
+Set klient2.PESEL="89063040015"
+Set klient2.Imie="Bartosz"
+Set klient2.Nazwisko="Koziej"
+Set klient2.Miasto="Tychy"
+Set klient2.Ulica="Wiosenna"
+Set klient2.NrDomu="4"
+Set klient2.NrLokalu="1"
+Set klient2.NrTelefonu="457710859"
+zwrite klient2
+Set sc = klient2.%Save()
+do $system.OBJ.DisplayError(sc)
+
+
+
+Set klient3= ##class(Firma.Klient).%New()
+Set klient3.PESEL="89070767639"
+Set klient3.Imie="Marcin"
+Set klient3.Nazwisko="Bielewicz"
+Set klient3.Miasto="Radom"
+Set klient3.Ulica="Dzika"
+Set klient3.NrDomu="14"
+Set klient3.NrLokalu="1"
+Set klient3.NrTelefonu="693540351"
+zwrite klient3
+Set sc = klient3.%Save()
+do $system.OBJ.DisplayError(sc)
+
+
+Set klient4= ##class(Firma.Klient).%New()
+Set klient4.PESEL="89071550177"
+Set klient4.Imie="Tobiasz"
+Set klient4.Nazwisko="Sojda"
+Set klient4.Miasto="Gdynia"
+Set klient4.Ulica="Koszalinska"
+Set klient4.NrDomu="1"
+Set klient4.NrLokalu="41"
+Set klient4.NrTelefonu="470879723"
+zwrite klient4
+Set sc = klient4.%Save()
+do $system.OBJ.DisplayError(sc)
+
+
+Set klient5= ##class(Firma.Klient).%New()
+Set klient5.PESEL="89071579011"
+Set klient5.Imie="Karol"
+Set klient5.Nazwisko="Jurecki"
+Set klient5.Miasto="Poronin"
+Set klient5.Ulica="Wyszynskiego"
+Set klient5.NrDomu="11"
+Set klient5.NrLokalu="12"
+Set klient5.NrTelefonu="592061852"
+zwrite klient5
+Set sc = klient5.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set zamowienie1= ##class(Firma.Zamowienie).%New()
+Set zamowienie1.NazwaZamowienia="sony xperia x"
+Set zamowienie1.Cena=1500
+Set zamowienie1.Status="Niewykonane"
+zwrite zamowienie1
+Set sc = zamowienie1.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set zamowienie2= ##class(Firma.Zamowienie).%New()
+Set zamowienie2.NazwaZamowienia="mysz Lenovo x100"
+Set zamowienie2.Cena=1200
+Set zamowienie2.Status="Wykonane"
+zwrite zamowienie2
+Set sc = zamowienie1.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set zamowienie3= ##class(Firma.Zamowienie).%New()
+Set zamowienie3.NazwaZamowienia="Laptop Dell w8000"
+Set zamowienie3.Cena=2000
+Set zamowienie3.Status="Niewykonane"
+zwrite zamowienie3
+Set sc = zamowienie3.%Save()
+do $system.OBJ.DisplayError(sc)
+
+
+Set zamowienie4= ##class(Firma.Zamowienie).%New()
+Set zamowienie4.NazwaZamowienia="Laptop Lenovo z50"
+Set zamowienie4.Cena=2200
+Set zamowienie4.Status="Niewykonane"
+zwrite zamowienie4
+Set sc = zamowienie4.%Save()
+do $system.OBJ.DisplayError(sc)
+
+
+Set zamowienie5= ##class(Firma.Zamowienie).%New()
+Set zamowienie5.NazwaZamowienia="Laptop Lenovo y600"
+Set zamowienie5.Cena=2400
+Set zamowienie5.Status="Niewykonane"
+zwrite zamowienie5
+Set sc = zamowienie5.%Save()
+do $system.OBJ.DisplayError(sc)
+
+
+Set zamowienie6= ##class(Firma.Zamowienie).%New()
+Set zamowienie6.NazwaZamowienia="Laptop Lenovo yzx200"
+Set zamowienie6.Cena=2900
+Set zamowienie6.Status="Niewykonane"
+zwrite zamowienie6
+Set sc = zamowienie6.%Save()
+do $system.OBJ.DisplayError(sc)
+
+
+Set zamowienie7= ##class(Firma.Zamowienie).%New()
+Set zamowienie7.NazwaZamowienia="Laptop Asus br300"
+Set zamowienie7.Cena=2900
+Set zamowienie7.Status="Wykonane"
+zwrite zamowienie7
+Set sc = zamowienie7.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set zamowienie8= ##class(Firma.Zamowienie).%New()
+Set zamowienie8.NazwaZamowienia="Laptop Asus NEW"
+Set zamowienie8.Cena=3500
+Set zamowienie8.Status="Wykonane"
+zwrite zamowienie8
+Set sc = zamowienie8.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set zamowienie9= ##class(Firma.Zamowienie).%New()
+Set zamowienie9.NazwaZamowienia="Laptop Xiaomi mix"
+Set zamowienie9.Cena=4000
+Set zamowienie9.Status="Wykonane"
+zwrite zamowienie9
+Set sc = zamowienie9.%Save()
+do $system.OBJ.DisplayError(sc)
+
+Set zamowienie10= ##class(Firma.Zamowienie).%New()
+Set zamowienie10.NazwaZamowienia="Smartfon Xiaomi m4"
+Set zamowienie10.Cena=2300
+Set zamowienie10.Status="Wykonane"
+zwrite zamowienie10
+Set sc = zamowienie10.%Save()
+do $system.OBJ.DisplayError(sc)
+
+
+Set klient1.sklada=zamowienie1;
+Set pracownik1.realizuje=zamowienie1;
+zwrite klient1
+zwrite pracownik1
+Set sc = klient1.%Save()
+Set sc = pracownik1.%Save()

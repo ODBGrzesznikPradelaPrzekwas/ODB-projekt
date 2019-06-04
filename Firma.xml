@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Export generator="Cache" version="25" zv="Cache for Windows (x86-64) 2016.2.1 (Build 803U_SU)" ts="2019-06-04 17:48:05">
+<Class name="Firma.Adres">
+<Abstract>1</Abstract>
+<Super>%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor</Super>
+<TimeChanged>65164,37343.600923</TimeChanged>
+<TimeCreated>65162,55564.335263</TimeCreated>
+
+<Property name="Miasto">
+<Type>%String</Type>
+<Required>1</Required>
+</Property>
+
+<Property name="Ulica">
+<Type>%String</Type>
+<Required>1</Required>
+</Property>
+
+<Property name="NrDomu">
+<Type>%String</Type>
+<Required>1</Required>
+</Property>
+
+<Property name="NrLokalu">
+<Type>%String</Type>
+</Property>
+</Class>
+
+
+<Class name="Firma.Klient">
+<Super>%Persistent,%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor,Firma.Osoba</Super>
+<TimeChanged>65166,83610.953676</TimeChanged>
+<TimeCreated>65162,57296.56234</TimeCreated>
+
+<Property name="NrTelefonu">
+<Type>%String</Type>
+<Parameter name="MAXLEN" value="9"/>
+<Parameter name="MINLEN" value="9"/>
+</Property>
+
+<Property name="sklada">
+<Type>Firma.Zamowienie</Type>
+<Cardinality>many</Cardinality>
+<Inverse>jestSkladane</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Firma.KlientD</DataLocation>
+<DefaultData>KlientDefaultData</DefaultData>
+<IdLocation>^Firma.KlientD</IdLocation>
+<IndexLocation>^Firma.KlientI</IndexLocation>
+<StreamLocation>^Firma.KlientS</StreamLocation>
+<Data name="KlientDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Miasto</Value>
+</Value>
+<Value name="3">
+<Value>Imie</Value>
+</Value>
+<Value name="4">
+<Value>Nazwisko</Value>
+</Value>
+<Value name="5">
+<Value>NrLokalu</Value>
+</Value>
+<Value name="6">
+<Value>NrDomu</Value>
+</Value>
+<Value name="7">
+<Value>NrTelefonu</Value>
+</Value>
+<Value name="8">
+<Value>PESEL</Value>
+</Value>
+<Value name="9">
+<Value>Ulica</Value>
+</Value>
+</Data>
+</Storage>
+
+<Method name="Wyswietlinformacje">
+<ReturnType>%String</ReturnType>
+<Implementation><![CDATA[
+ 
+ Return "Imię: "_..Imie_" Nazwisko: "_..Nazwisko_" PESEL: "_..PESEL
+]]></Implementation>
+</Method>
+</Class>
+
+
+<Class name="Firma.Osoba">
+<Abstract>1</Abstract>
+<Super>%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor,Firma.Adres</Super>
+<TimeChanged>65166,83619.589962</TimeChanged>
+<TimeCreated>65162,56002.072999</TimeCreated>
+
+<Property name="PESEL">
+<Type>%String</Type>
+<Required>1</Required>
+<Parameter name="MAXLEN" value="11"/>
+<Parameter name="MINLEN" value="11"/>
+</Property>
+
+<Property name="Imie">
+<Type>%String</Type>
+<Required>1</Required>
+</Property>
+
+<Property name="Nazwisko">
+<Type>%String</Type>
+<Required>1</Required>
+</Property>
+
+<Method name="Wyswietlinformacje">
+<ReturnType>%String</ReturnType>
+<Implementation><![CDATA[
+ 
+ Return "Imię: "_..Imie_" Nazwisko: "_..Nazwisko_" PESEL: "_..PESEL
+]]></Implementation>
+</Method>
+</Class>
+
+
+<Class name="Firma.Pracownik">
+<Super>%Persistent,%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor,Firma.Osoba</Super>
+<TimeChanged>65166,83638.585276</TimeChanged>
+<TimeCreated>65162,57989.290131</TimeCreated>
+
+<Property name="Praca">
+<Type>Stanowisko</Type>
+<Required>1</Required>
+</Property>
+
+<Property name="realizuje">
+<Type>Firma.Zamowienie</Type>
+<Cardinality>many</Cardinality>
+<Inverse>jestRealizowane</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="jestZarzadzany">
+<Type>Firma.Wlasciciel</Type>
+<Cardinality>one</Cardinality>
+<Inverse>Zarzadza</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Firma.PracownikD</DataLocation>
+<DefaultData>PracownikDefaultData</DefaultData>
+<IdLocation>^Firma.PracownikD</IdLocation>
+<IndexLocation>^Firma.PracownikI</IndexLocation>
+<StreamLocation>^Firma.PracownikS</StreamLocation>
+<Data name="PracownikDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Miasto</Value>
+</Value>
+<Value name="3">
+<Value>Imie</Value>
+</Value>
+<Value name="4">
+<Value>Nazwisko</Value>
+</Value>
+<Value name="5">
+<Value>NrLokalu</Value>
+</Value>
+<Value name="6">
+<Value>Nazwa</Value>
+</Value>
+<Value name="7">
+<Value>NrDomu</Value>
+</Value>
+<Value name="8">
+<Value>PESEL</Value>
+</Value>
+<Value name="9">
+<Value>Praca</Value>
+</Value>
+<Value name="10">
+<Value>Ulica</Value>
+</Value>
+<Value name="11">
+<Value>jestZarzadzany</Value>
+</Value>
+</Data>
+</Storage>
+
+<Method name="Wyswietlinformacje">
+<ReturnType>%String</ReturnType>
+<Implementation><![CDATA[
+ 
+ Return "Imię: "_..Imie_" Nazwisko: "_..Nazwisko_" PESEL: "_..PESEL
+]]></Implementation>
+</Method>
+
+<Method name="ZmienCeneZamowienia">
+<FormalSpec>NazwaZamowienia,stawka</FormalSpec>
+<ReturnType>%Float</ReturnType>
+<Implementation><![CDATA[
+  set NazwaZamowienia.Cena = stawka
+  Return stawka
+]]></Implementation>
+</Method>
+
+<Method name="ZmienStanZamowienia">
+<FormalSpec>NazwaZamowienia,Stan</FormalSpec>
+<ReturnType>%String</ReturnType>
+<Implementation><![CDATA[
+  set NazwaZamowienia.Status = Stan
+  Return Stan
+]]></Implementation>
+</Method>
+</Class>
+
+
+<Class name="Firma.Stanowisko">
+<Super>%SerialObject,%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor</Super>
+<TimeChanged>65163,83899.075186</TimeChanged>
+<TimeCreated>65162,57770.162763</TimeCreated>
+
+<Property name="Nazwa">
+<Type>%String</Type>
+<Required>1</Required>
+</Property>
+
+<Property name="Wynagrodzenie">
+<Type>%Float</Type>
+<Required>1</Required>
+</Property>
+
+<Storage name="Default">
+<Type>%Library.CacheSerialState</Type>
+<State>StanowiskoState</State>
+<StreamLocation>^Firma.StanowiskoS</StreamLocation>
+<Data name="StanowiskoState">
+<Structure>listnode</Structure>
+<Subscript/>
+<Value name="1">
+<Value>Nazwa</Value>
+</Value>
+<Value name="2">
+<Value>Wynagrodzenie</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+<Class name="Firma.Wlasciciel">
+<Super>%Persistent,%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor,%Persistent,Firma.Osoba</Super>
+<TimeChanged>65168,62593.240714</TimeChanged>
+<TimeCreated>65162,57423.915553</TimeCreated>
+
+<Property name="Firma">
+<Type>%String</Type>
+<Required>1</Required>
+</Property>
+
+<Property name="Zarzadza">
+<Type>Firma.Pracownik</Type>
+<Cardinality>many</Cardinality>
+<Inverse>jestZarzadzany</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Firma.WlascicielD</DataLocation>
+<DefaultData>WlascicielDefaultData</DefaultData>
+<IdLocation>^Firma.WlascicielD</IdLocation>
+<IndexLocation>^Firma.WlascicielI</IndexLocation>
+<StreamLocation>^Firma.WlascicielS</StreamLocation>
+<Data name="WlascicielDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>Firma</Value>
+</Value>
+<Value name="3">
+<Value>Imie</Value>
+</Value>
+<Value name="4">
+<Value>Nazwisko</Value>
+</Value>
+<Value name="5">
+<Value>NrLokalu</Value>
+</Value>
+<Value name="6">
+<Value>Miasto</Value>
+</Value>
+<Value name="7">
+<Value>NrDomu</Value>
+</Value>
+<Value name="8">
+<Value>PESEL</Value>
+</Value>
+<Value name="9">
+<Value>Ulica</Value>
+</Value>
+</Data>
+</Storage>
+
+<Method name="Wyswietlinformacje">
+<ReturnType>%String</ReturnType>
+<Implementation><![CDATA[
+ 
+ Return "Imię: "_..Imie_" Nazwisko: "_..Nazwisko_" PESEL: "_..PESEL
+]]></Implementation>
+</Method>
+
+<Method name="ZmienWynagrodzenie">
+<FormalSpec>pracownik,stawka</FormalSpec>
+<ReturnType>%Float</ReturnType>
+<Implementation><![CDATA[
+  set pracownik.Praca.Wynagrodzenie = stawka
+  Return stawka
+]]></Implementation>
+</Method>
+
+<Method name="ZwolnijPracownika">
+<FormalSpec>id</FormalSpec>
+<ReturnType>%String</ReturnType>
+<Implementation><![CDATA[
+ 
+  Set sc = ##class(Firma.Pracownik).%DeleteId(id)
+ return id
+]]></Implementation>
+</Method>
+</Class>
+
+
+<Class name="Firma.Zamowienie">
+<Super>%Persistent,%Populate,%XML.Adaptor,%ZEN.DataModel.Adaptor</Super>
+<TimeChanged>65164,36899.333777</TimeChanged>
+<TimeCreated>65163,78135.0927</TimeCreated>
+
+<Property name="NazwaZamowienia">
+<Type>%String</Type>
+<Required>1</Required>
+</Property>
+
+<Property name="Cena">
+<Type>%Float</Type>
+<Required>1</Required>
+</Property>
+
+<Property name="Status">
+<Type>%String</Type>
+<Required>1</Required>
+</Property>
+
+<Property name="jestRealizowane">
+<Type>Firma.Pracownik</Type>
+<Cardinality>one</Cardinality>
+<Inverse>realizuje</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Property name="jestSkladane">
+<Type>Firma.Klient</Type>
+<Cardinality>one</Cardinality>
+<Inverse>sklada</Inverse>
+<Relationship>1</Relationship>
+</Property>
+
+<Storage name="Default">
+<Type>%Library.CacheStorage</Type>
+<DataLocation>^Firma.ZamowienieD</DataLocation>
+<DefaultData>ZamowienieDefaultData</DefaultData>
+<IdLocation>^Firma.ZamowienieD</IdLocation>
+<IndexLocation>^Firma.ZamowienieI</IndexLocation>
+<StreamLocation>^Firma.ZamowienieS</StreamLocation>
+<Data name="ZamowienieDefaultData">
+<Value name="1">
+<Value>%%CLASSNAME</Value>
+</Value>
+<Value name="2">
+<Value>NazwaZamowienia</Value>
+</Value>
+<Value name="3">
+<Value>Cena</Value>
+</Value>
+<Value name="4">
+<Value>Status</Value>
+</Value>
+<Value name="5">
+<Value>jestRealizowane</Value>
+</Value>
+<Value name="6">
+<Value>jestSkladane</Value>
+</Value>
+</Data>
+</Storage>
+</Class>
+
+
+</Export>
